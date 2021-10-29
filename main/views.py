@@ -4,6 +4,9 @@ from .forms import CreateUserForm
 from  django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+
+
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 # creating my logic here
 def registerPage(request):
@@ -43,6 +46,8 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
+  #home page here 
+@login_required(login_url='login')
 def home(request):
     content={}
     return render(request, 'home.html', content)
