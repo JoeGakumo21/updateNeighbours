@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Landing - Free Bulma template</title>
+    <title>Landing -neighbour updated</title>
     <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="navbar-brand">
                         <a class="navbar-item" href="../">
-                            <img src="http://bulma.io/images/bulma-type-white.png" alt="Logo">
+                            <h1 class="button is-white is-outlined">Neighbar Updated</h1>
                         </a>
                         <span class="navbar-burger burger" data-target="navbarMenu">
                             <span></span>
@@ -55,14 +55,32 @@
                                     <span>Documentation</span>
                                 </a>
                             </span>
-                            <span class="navbar-item">
+                            <!-- <span class="navbar-item">
                                 <a class="button is-white is-outlined" href="https://github.com/BulmaTemplates/bulma-templates/blob/master/templates/landing.html">
                                     <span class="icon">
                                         <i class="fa fa-github"></i>
                                     </span>
                                     <span>View Source</span>
                                 </a>
-                            </span>
+                            </span> -->
+                            <div class="navbar-item has-dropdown is-hoverable is-dark">
+                              
+                                <a class="navbar-link  is-white is-outlined">
+                                    <span style="color:rgb(17, 1, 1);font-size:2rem ">Hello, {{user}}</span>
+                                </a>
+                              
+                                <div class="navbar-dropdown" style=" background-color:rgb(250, 247, 253);color: red;">
+                                  <a class="navbar-item  is-black is-outlined drop" style=" color:black">
+                                  Settings
+                                  </a>
+                                  <a class="navbar-item  is-white is-outlined" style=" color:black">
+                                    Profile
+                                  </a>
+                                  <a class="navbar-item  is-white is-outlined" class="navbar-item" style=" color:black" class="button is-white is-outlined" href="{% url 'logout' %}">
+                                    Logout
+                                  </a>
+                                  
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -76,7 +94,7 @@
                             Coming Soon
                         </h1>
                         <h2 class="subtitle">
-                            $this is the best software platform for running an internet business. We handle billions of dollars every year for forward-thinking businesses around the world.
+                            $this is the best Website platform for accessing any internet updates. We handle billions of updates every year for forward-thinking news updates around the world.
                         </h2>
                         <div class="box">
                             <div class="field is-grouped">
