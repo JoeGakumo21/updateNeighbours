@@ -76,7 +76,7 @@ def addnews(request):
     if request.method=="POST":
         data= request.POST
         image=request.FILES.get('image')
-
+        
         if data['category']!='none':
             category=Category.objects.get(id=data['category'])
         elif data['newcategory'] !='':
@@ -87,8 +87,8 @@ def addnews(request):
         newsdetail=NewsDetail.objects.create(
             category=category,
             description=data['description'],
-            date_posted=data['date_posted'],
-            postedby=data['postedby'],
+            date_posted=data['posted'],
+            postedby=data['source'],
             image=image
 
 
