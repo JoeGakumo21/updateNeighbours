@@ -1,1 +1,1 @@
-web: gunicorn Appreview.wsgi --log-file -
+web: gunicorn NeighboorApp.wsgi --log-file -
