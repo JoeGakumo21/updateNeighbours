@@ -71,4 +71,6 @@ def newsdetails(request,pk):
 
 # the addnews temmplate
 def addnews(request):
-    return render(request,'addnews.html')
+    categories=Category.objects.all()
+    content={'categories':categories,}
+    return render(request,'addnews.html',content)

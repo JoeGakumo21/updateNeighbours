@@ -12,14 +12,41 @@
  <div class="container">
      <div class="row justify-content-center">
        
-        <div class="col-md-4">
+        <div class="col-md-5">
             <a href="{% url 'home' %}" class="btn btn-sm btn-dark m-2">Back</a>
              <div class="card">
-                <form>
+                <form class="m-2" method="POST">
+                    {% csrf_token %}
                     <div class="form-group">
-                      <label for="exampleFormControlFile1">Upload image</label>
-                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <label for="exampleFormControlFile1">Upload image</label>
+                        <input type="file" class="form-control" id="exampleFormControlFile1">
+                      </div>
+                    <div class="form-group">
+                      <label >News Category</label>
+                      <select name="category" class="form-control" > 
+                        <option value="none" value>News Category</option>                        
+                          {% for   category in categories %}
+                          <option value="{{category.id}}" value>{{category.name}}</option>
+                          {% endfor %}
+                      </select>
                     </div>
+                    <div class="form-group">
+                        <label>Create a new Category</label>
+                        <input name="new" type="text" class="form-control" placeholder="Create your category" >
+                    </div>
+                    <div class="form-group">
+                        <label>Date Posted</label>
+                        <input name="posted" type="text" class="form-control" placeholder="29/10/2021" required>
+                    </div>
+                    <div class="form-group">
+                        <label >News Description</label>
+                        <textarea name="description" type="text" class="form-control" required placeholder="FAST, For those runners looking to challenge their previous best and cross the finish line faster than ever before. This option is built around improving your personal" ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>News Source</label>
+                        <input type="text" name="source" class="form-control" placeholder="Liverpoor news" required>
+                    </div>
+                    <button class="btn-sm btn-primary" type="submit">Post</button>
                   </form>
              </div>
         </div>
