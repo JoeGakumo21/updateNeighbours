@@ -38,7 +38,7 @@ This is a Project Review  web application to showcase different projects develop
 - Bulma
 
 ### live link
-<a href="https://awwardpro7.herokuapp.com/">Awward Project Review site</a>
+<a href=" https://hotneighbour.herokuapp.com/ ">Updated Neighbour Always</a>
 ## Know bugs
 there are no bugs so far
 # LICENCE 
