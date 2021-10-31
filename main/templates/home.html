@@ -137,8 +137,8 @@
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="{{newsContent.image.url}}" alt="Card image cap">
                         <div class="card-body">
-                          <p>Category: Sport News</p>                          
-                          <a href="{% url 'newsdetails' 4 %}" class="btn btn-primary">View</a>
+                          <p>{{newsContent.category.name}}</p>                          
+                          <a href="{% url 'newsdetails' newsContent.id  %}" class="btn btn-primary">View</a>
                         </div>
                       </div>
                  </div>   

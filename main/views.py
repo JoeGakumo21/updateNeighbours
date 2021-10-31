@@ -65,8 +65,8 @@ def home(request):
 
 # the newsdetails template
 def newsdetails(request,pk):
-    content=NewsDetail.objects.get(id=pk)
-    context={'content':content}
+    contents=NewsDetail.objects.get(id=pk)
+    context={'content':contents}
     return render(request,'newsdetails.html',context)
 
 # the addnews temmplate

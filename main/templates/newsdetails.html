@@ -10,13 +10,17 @@
 <body class="m-5">
     <div class="container">
         <div class="row justify-content-center">
+           
             <div class="col">
                 <a href="{% url 'home' %}" class="btn btn-sm btn-primary m-2">Back</a>
-                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlQHk2r8NXScyBeg0TRY06Igkx2rta4c0DPg&usqp=CAU" alt="Card image cap" height="90%">
-                <p>Posted on 7/20/21</p> 
-                <p>For those runners looking to challenge their previous best and cross the finish line faster than ever before. This option is built around improving your personal</p>
-                <p>Joe Gakumo</p>
+                <img class="card-img-top" src="{{content.image.url}}" alt="Card image cap" height="90%">
+                <span><p class="mt-1 text-info">{{content.category}}</p></span>
+                <p>Posted on {{content.date_posted}}</p> 
+   
+                <p>{{content.description}}</p>
+                <p class="text-success">Source News :{{content.postedby}}</p>
             </div>
+         
             </div>
           </div>
     </div>
