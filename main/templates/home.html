@@ -51,19 +51,12 @@
                             <span class="navbar-item">
                                 <a class="button is-white is-outlined" href="#">
                                     <span class="icon">
-                                        <i class="fa fa-book"></i>
+                                        <i class="fa fa-user"></i>
                                     </span>
-                                    <span>Documentation</span>
+                                    <span>Profile</span>
                                 </a>
                             </span>
-                            <!-- <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="https://github.com/BulmaTemplates/bulma-templates/blob/master/templates/landing.html">
-                                    <span class="icon">
-                                        <i class="fa fa-github"></i>
-                                    </span>
-                                    <span>View Source</span>
-                                </a>
-                            </span> -->
+                           
                             <div class="navbar-item has-dropdown is-hoverable is-dark">
                               
                                 <a class="navbar-link  is-white is-outlined">
@@ -97,26 +90,50 @@
                         <h2 class="subtitle">
                             $this is the best Website platform for accessing any internet updates. We handle billions of updates every year for forward-thinking news updates around the world.
                         </h2>
-                        <div class="box">
-                            <div class="field is-grouped">
-                                <p class="control is-expanded">
-                                    <input class="input" type="text" placeholder="Enter your search">
-                                </p>
-                                <p class="control">
-                                    <a class="button is-info">
-                                        Seach
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
+                          <a href="{% url 'newshome' %}" class="button is-white is-inverted" style="text-decoration: none;">Next&ensp;<i class="fad fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
 
     </section>
+      <footer class="footer" style="background-color: rgb(4, 22, 31);">
+        <div class="content has-text-centered">
+          <p>
+            <strong>JoeGakumo</strong> by <a href="#">Joe Gakumo</a>. The source code is licensed
+            <a href="#">MIT</a>. The website content
+            is licensed <a href="#">CC BY NC SA 4.0</a>.
+          </p>
+        </div>
+      </footer>
   
 
-    <script async type="text/javascript" src="../js/bulma.js"></script>
+    <script >
+    document.addEventListener('DOMContentLoaded', () => {
+
+// Get all "navbar-burger" elements
+const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+// Check if there are any navbar burgers
+if ($navbarBurgers.length > 0) {
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+}
+
+});
+    </script>
 </body>
 
 </html>

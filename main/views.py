@@ -68,6 +68,12 @@ def home(request):
     content={}
     return render(request, 'home.html', content)
 def newshome(request):
+    # search goes here
+    if 'seacrh' in request.GET:
+        search=request.GET['search']
+        categories=Category.objects.filter(category__icontains=search)
+    else:
+         categories=Category.objects.all()
     # quering the category class
     category=request.GET.get('category')
     if category ==None:

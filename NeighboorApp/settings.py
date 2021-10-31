@@ -10,6 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
+import django_heroku
+import dj_database_url
+from decouple import config,Csv
+import cloudinary_storage
+
 from pathlib import Path
 from django.core.mail import send_mail
 
@@ -24,7 +30,32 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@(^+($nfey^f_n%z3@_xgg#t1(o$14nib2l$if9kwwd0w&t194'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
+# development
+if config('MODE')=="dev":
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'HOST': config('DB_HOST'),
+           'PORT': '',
+       }
+       
+   }
+# production
+else:
+   DATABASES = {
+       'default': dj_database_url.config(
+           default=config('DATABASE_URL')
+       )
+   }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 ALLOWED_HOSTS = []
 
@@ -39,9 +70,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'cloudinary_storage',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,14 +109,14 @@ WSGI_APPLICATION = 'NeighboorApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':('myneighboorapp'),
-        'USER':('moringa'),
-        'PASSWORD':('Access'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME':('myneighboorapp'),
+#         'USER':('moringa'),
+#         'PASSWORD':('Access'),
+#     }
+# }
 
 
 # Password validation
@@ -126,10 +160,15 @@ MEDIA_URL='/images/'
 
 STATICFILES_DIRS=[BASE_DIR / 'static' ]
 
+STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT=BASE_DIR / 'static/images'
 STATIC_ROOT= BASE_DIR/'staticfiles'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -141,3 +180,17 @@ EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER='joegakumo1@gmail.com'
 EMAIL_HOST_UPASSWORD='Joe32120141.'
+
+
+
+CRISPY_TEMPLATE_PACK= 'bootstrap4'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'joegakumo',
+    'API_KEY': '723515225592184',
+    'API_SECRET': 'CthUNXT_an6XgzBBs6FAQmBh3zI'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+django_heroku.settings(locals())

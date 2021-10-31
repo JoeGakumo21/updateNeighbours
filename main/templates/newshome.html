@@ -18,7 +18,7 @@
 <body>
     <section class="hero is-info is-fullheight">
         <div class="hero-head">
-            <nav class="navbar">
+            <nav class="navbar" style="background-color: rgb(42, 53, 52);">
                 <div class="container">
                     <span class="navbar-item">
                         <a class="button is-white is-outlined" href="{% url 'newshome'%}">
@@ -28,33 +28,13 @@
                             <span>Home</span>
                         </a>
                     </span>
+                    <span class="navbar-item">
+                        <a class="button is-white is-outlined" href="{% url 'home'%}">
+                        <span>Back</span>
+                    </a>
+                    </span>
                     <div id="navbarMenu" class="navbar-menu">
                         <div class="navbar-end">
-                          
-                            <!-- <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="#">
-                                    <span class="icon">
-                                        <i class="fa fa-superpowers"></i>
-                                    </span>
-                                    <span>Examples</span>
-                                </a>
-                            </span>
-                            <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="#">
-                                    <span class="icon">
-                                        <i class="fa fa-book"></i>
-                                    </span>
-                                    <span>Documentation</span>
-                                </a>
-                            </span> -->
-                            <!-- <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="https://github.com/BulmaTemplates/bulma-templates/blob/master/templates/landing.html">
-                                    <span class="icon">
-                                        <i class="fa fa-github"></i>
-                                    </span>
-                                    <span>View Source</span>
-                                </a>
-                            </span> -->
                             <div class="navbar-item has-dropdown is-hoverable is-dark">
                               
                                 <a class="navbar-link  is-white is-outlined">
@@ -62,12 +42,10 @@
                                 </a>
                               
                                 <div class="navbar-dropdown" style=" background-color:rgb(250, 247, 253);color: red;">
-                                  <a class="navbar-item  is-black is-outlined drop" style=" color:black">
-                                  Settings
+                                  <a class="navbar-item  is-black is-outlined drop" style=" color:black" href="{% url 'home' %}">
+                                  Home
                                   </a>
-                                  <a class="navbar-item  is-white is-outlined" style=" color:black">
-                                    Profile
-                                  </a>
+                                  
                                   <a class="navbar-item  is-white is-outlined" class="navbar-item" style=" color:black" class="button is-white is-outlined" href="{% url 'logout' %}">
                                     Logout
                                   </a>
@@ -102,7 +80,7 @@
                  <div class="col-md-9">
                      <div class="row">
                          {% for newsContent in newsContents %}
-                         <div class="col-md-4 mb-2">
+                         <div class="col-md-4 col-sm-12 mb-2">
                             <div class="card" style="width: 18rem;">
                                 <img class="card-img-top" src="{{newsContent.image.url}}" alt="Card image cap">
                                 <div class="card-body">
@@ -120,7 +98,15 @@
               </div>
 
     </section>
-  
+    <footer class="footer" style="background-color: rgb(4, 22, 31);">
+        <div class="content has-text-centered">
+          <p>
+            <strong>JoeGakumo</strong> by <a href="#">Joe Gakumo</a>. The source code is licensed
+            <a href="#">MIT</a>. The website content
+            is licensed <a href="#">CC BY NC SA 4.0</a>.
+          </p>
+        </div>
+      </footer>
 
     <script async type="text/javascript" src="../js/bulma.js"></script>
 </body>

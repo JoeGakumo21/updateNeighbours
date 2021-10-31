@@ -1,0 +1,1 @@
+web: gunicorn Appreview.wsgi --log-file -
