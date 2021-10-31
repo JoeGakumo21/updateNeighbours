@@ -61,7 +61,7 @@ def home(request):
 
 
 # the newsdetails template
-def newsdetails(request):
+def newsdetails(request,pk):
     return render(request,'newsdetails.html')
 
 # the addnews temmplate

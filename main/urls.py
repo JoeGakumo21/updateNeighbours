@@ -14,6 +14,6 @@ urlpatterns = [
    path('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
 
    path('',views.home, name="home"),
-   path('newsdetails/',views.newsdetails, name="newsdetails"),
+   path('newsdetails/<str:pk>/',views.newsdetails, name="newsdetails"),
    path('addnews/',views.addnews, name="addnews"),
 ]
