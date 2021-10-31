@@ -72,5 +72,28 @@ def newsdetails(request,pk):
 # the addnews temmplate
 def addnews(request):
     categories=Category.objects.all()
+
+    if request.method=="POST":
+        data= request.POST
+        image=request.FILES.get('image')
+
+        if data['category']!='none':
+            category=Category.objects.get(id=data['category'])
+        elif data['newcategory'] !='':
+            category, created=Category.objects.get_or_create(name=data['newcategory'])   
+        else:
+            category=None    
+
+        newsdetail=NewsDetail.objects.create(
+            category=category,
+            description=data['description'],
+            date_posted=data['date_posted'],
+            postedby=data['postedby'],
+            image=image
+
+
+        )
+        return redirect ('home')
+
     content={'categories':categories,}
     return render(request,'addnews.html',content)
