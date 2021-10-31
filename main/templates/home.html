@@ -119,7 +119,7 @@
          <div class="col-md-3">
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                  News Neighbour
+                  Keep Updated Neighbar
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">All News</li>
@@ -132,16 +132,19 @@
          </div>
          <div class="col-md-9">
              <div class="row">
+                 {% for newsContent in newsContents %}
                  <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlQHk2r8NXScyBeg0TRY06Igkx2rta4c0DPg&usqp=CAU" alt="Card image cap">
+                        <img class="card-img-top" src="{{newsContent.image.url}}" alt="Card image cap">
                         <div class="card-body">
-                          <p>Category: Sport News</p>
-                          
+                          <p>Category: Sport News</p>                          
                           <a href="{% url 'newsdetails' 4 %}" class="btn btn-primary">View</a>
                         </div>
                       </div>
-                 </div>                
+                 </div>   
+                 {% empty %}
+                 <h3>No Image for the news</h3>
+                 {% endfor %}             
              </div>
          </div>
         </div>

@@ -58,13 +58,16 @@ def logoutUser(request):
 def home(request):
     # quering the category class
     categories=Category.objects.all()
-    content={'categories':categories}
+    newsContents=NewsDetail.objects.all()
+    content={'categories':categories, 'newsContents':newsContents}
     return render(request, 'home.html', content)
 
 
 # the newsdetails template
 def newsdetails(request,pk):
-    return render(request,'newsdetails.html')
+    content=NewsDetail.objects.get(id=pk)
+    context={'content':content}
+    return render(request,'newsdetails.html',context)
 
 # the addnews temmplate
 def addnews(request):
