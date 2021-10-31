@@ -11,9 +11,9 @@ class Category(models.Model):
 
 
 # news details
-class NewsDetails(models.Model):    
+class NewsDetail(models.Model):    
     image=models.ImageField(null=False, blank=False)
-    Category=models.ForeignKey(Category, on_delete=models.SET_NULL)
+    Category=models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     date_posted=models.CharField(max_length=30)    
-    description=models.CharField(max_length=1300, null=False, blank=False)
+    description=models.TextField(max_length=1300, null=False, blank=False)
     postedby=models.CharField(max_length=200)
