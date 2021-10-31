@@ -123,9 +123,10 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">All News</li>
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                 <a href="{% url 'addnews' %}" class=" btn btn-primary  btn-sm m-1">Add news</a>
+                    {% for category in categories %}
+                    <li class="list-group-item">{{category.name}}</li>
+                    {%endfor%}
+                   <a href="{% url 'addnews' %}" class=" btn btn-primary  btn-sm m-1">Add news</a>
                 </ul>
               </div>
          </div>

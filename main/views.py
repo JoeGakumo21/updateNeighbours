@@ -4,7 +4,7 @@ from .forms import CreateUserForm
 from  django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-
+from .models import Category, NewsDetail
 
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -56,7 +56,9 @@ def logoutUser(request):
   #home page here 
 @login_required(login_url='login')
 def home(request):
-    content={}
+    # quering the category class
+    categories=Category.objects.all()
+    content={'categories':categories}
     return render(request, 'home.html', content)
 
 
