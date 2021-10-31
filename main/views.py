@@ -58,3 +58,12 @@ def logoutUser(request):
 def home(request):
     content={}
     return render(request, 'home.html', content)
+
+
+# the newsdetails template
+def newsdetails(request):
+    return render(request,'newsdetails.html')
+
+# the addnews temmplate
+def addnews(request):
+    return render(request,'addnews.html')
