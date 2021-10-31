@@ -57,11 +57,28 @@ def logoutUser(request):
 @login_required(login_url='login')
 def home(request):
     # quering the category class
-    categories=Category.objects.all()
-    newsContents=NewsDetail.objects.all()
-    content={'categories':categories, 'newsContents':newsContents}
+    # category=request.GET.get('category')
+    # if category ==None:
+    #      newsContents=NewsDetail.objects.all()
+    # else:
+    #      newsContents=NewsDetail.objects.filter(category__name=category)     
+        
+    # categories=Category.objects.all()
+    # # newsContents=NewsDetail.objects.all()
+    content={}
     return render(request, 'home.html', content)
-
+def newshome(request):
+    # quering the category class
+    category=request.GET.get('category')
+    if category ==None:
+         newsContents=NewsDetail.objects.all()
+    else:
+         newsContents=NewsDetail.objects.filter(category__name=category)     
+        
+    categories=Category.objects.all()
+    # newsContents=NewsDetail.objects.all()
+    content={'categories':categories, 'newsContents':newsContents}
+    return render(request, 'newshome.html', content)
 
 # the newsdetails template
 def newsdetails(request,pk):
@@ -97,3 +114,14 @@ def addnews(request):
 
     content={'categories':categories,}
     return render(request,'addnews.html',content)
+
+#search news by category
+def search_results(request):
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
+        searched_articles = NewsDetail.search_category(search_term)
+        message = f"{search_term}"
+        return render(request, 'search.html',{"message":message,"categories": searched_articles})
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message}) 
