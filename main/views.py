@@ -57,15 +57,7 @@ def logoutUser(request):
   #home page here 
 @login_required(login_url='login')
 def home(request):
-    # quering the category class
-    # category=request.GET.get('category')
-    # if category ==None:
-    #      newsContents=NewsDetail.objects.all()
-    # else:
-    #      newsContents=NewsDetail.objects.filter(category__name=category)     
-        
-    # categories=Category.objects.all()
-    # # newsContents=NewsDetail.objects.all()
+   
     content={}
     return render(request, 'home.html', content)
 def newshome(request):
