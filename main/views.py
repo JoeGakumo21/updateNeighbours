@@ -4,7 +4,7 @@ from .forms import CreateUserForm
 from  django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from .models import Category, NewsDetail
+from .models import Category, NewsDetail,Profile
 
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -131,3 +131,6 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message}) 
+
+
+#  profile details 
