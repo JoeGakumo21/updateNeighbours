@@ -1,4 +1,4 @@
-
+{% load static %}
  <!DOCTYPE html>
  <html lang="en">
   <head>
@@ -14,7 +14,15 @@
     <link rel="stylesheet" type="text/css" href="static/css/landing.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
- <body class="bg-secondary">
+<style>
+      body{ 
+   
+  background-image: url("https://thumbs.dreamstime.com/b/news-network-mobile-device-89835976.jpg"); height:100vh;
+   background-repeat:no-repeat;
+   background-size:cover;
+   }
+</style>
+ <body>
    <div class="container">
      <div class="row">
        <div class="col">
@@ -27,7 +35,7 @@
 
   <div class="card">
     <div class="card-image">
-      <figure class="image is-4by3">
+      <figure class="image is-3by3">
         <img src="{{ user.profile.image.url }}" alt="User image">
       </figure>
     </div>
