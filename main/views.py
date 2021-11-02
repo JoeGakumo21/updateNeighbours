@@ -116,7 +116,7 @@ def addnews(request):
 
 
         )
-        return redirect ('home')
+        return redirect ('newshome')
 
     content={'categories':categories,}
     return render(request,'addnews.html',content)
