@@ -70,7 +70,7 @@
                             </li>
                             {% for category in categories %}
                             <li class="list-group-item">
-                                <a href="{% url 'home' %}?category={{category.name}}" style="text-decoration: none;">{{category.name}}</a>
+                                <a href="{% url 'newshome' %}?category={{category.name}}" style="text-decoration: none;">{{category.name}}</a>
                             </li>
                             {%endfor%}
                            <a href="{% url 'addnews' %}" class=" btn btn-primary  btn-sm m-1">Add news</a>
