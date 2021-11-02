@@ -5,6 +5,7 @@ from  django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .models import Category, NewsDetail,Profile
+from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
 
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -134,3 +135,35 @@ def search_results(request):
 
 
 #  profile details 
+def userPage(request):
+    context = {}
+
+    return render(request,'user.html',context)
+
+
+
+def profile(request):
+    user = request.user
+    user = Profile.objects.get_or_create(user= request.user)
+    
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)                         
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated successfully!')
+            return redirect('home')
+
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+        'user': user
+
+    }
+
+    return render(request, 'profile.html', context)

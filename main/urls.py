@@ -18,4 +18,5 @@ urlpatterns = [
    path('newsdetails/<str:pk>/',views.newsdetails, name="newsdetails"),
    path('addnews/',views.addnews, name="addnews"),
    path('search_results/',views.search_results, name='search_results'),
+   path('profile/', views.profile, name='profile'),
 ]

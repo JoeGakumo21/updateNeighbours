@@ -1,0 +1,70 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile updated</title>
+    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.9.0-->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/landing.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+ <body class="bg-secondary">
+   <div class="container">
+     <div class="row">
+       <div class="col">
+        {% load crispy_forms_tags %}
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-mobile is-centered">
+            <div class="column is-half">
+
+  <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="{{ user.profile.image.url }}" alt="User image">
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4" >{{user.username}}</p>
+          <p class="subtitle is-6">{{user.email}}</p>
+        </div>
+      </div>
+
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">
+            profile
+          </legend>
+          {{ u_form|crispy}}
+          {{ p_form|crispy}}
+  
+        </fieldset>
+        <div class="form-group">
+  
+          <button class="button is-link is-info" type="submit">updated</button>
+        </div>
+  
+  </form>
+  
+    </div>
+  </div>
+
+            </div>
+        </div>
+    </div>
+  </section>
+       </div>
+     </div>
+   </div>
+ </body>
+ </html>
