@@ -68,6 +68,9 @@
                             <li class="list-group-item">
                                <a href="{% url 'newshome' %}" style="text-decoration: none;">All News</a>
                             </li>
+                            <li class="list-group-item">
+                                <a style="text-decoration: none;color:red">Click below links to search by Category</a>
+                             </li>
                             {% for category in categories %}
                             <li class="list-group-item">
                                 <a href="{% url 'newshome' %}?category={{category.name}}" style="text-decoration: none;">{{category.name}}</a>
